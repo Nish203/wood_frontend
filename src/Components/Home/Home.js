@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
   return (
 <div className='w-full '>
-<Navbar/>
     <div class=" bg-cover ">
         
       
@@ -39,7 +38,6 @@ const Home = () => {
     <Trending/>
     <Help/>
     <Reviewslide/>
-    <Footer/>
     </div>
    )
 }  

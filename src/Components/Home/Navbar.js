@@ -2,6 +2,7 @@ import React from "react";
 import logo from '../images/logo.png'
 import { NavLink } from "react-bootstrap";
 import {IoLocationOutline,IoMenu, IoChevronDown, IoPersonOutline,IoStorefrontOutline,IoBagHandleOutline,IoHeartOutline,IoSearchOutline} from 'react-icons/io5'
+import { Link } from "react-router-dom";
 export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
@@ -63,16 +64,16 @@ export default function Navbar({ fixed }) {
             <ul className=" text-xl mr-10 flex flex-col  lg:flex-row list-none lg:ml-auto">
               
               <li className="nav-item mr-7">
-                <NavLink to="/"> Home </NavLink>
+                <Link to="/"> Home </Link>
               </li>
               <li className="nav-item mr-7">
-                <NavLink to="/"> Table </NavLink>
+                <Link to="/"> Table </Link>
               </li>
               <li className="nav-item mr-7">
-                <NavLink to="/"> Exclusive </NavLink>
+                <Link to="/"> Exclusive </Link>
               </li>
               <li className="nav-item mr-7">
-                <NavLink to="/"> Contact us </NavLink>
+                <Link to="/"> Contact us </Link>
               </li>
   {/* Furniture */}
                   <div class="relative" data-te-dropdown-ref>
@@ -127,16 +128,16 @@ export default function Navbar({ fixed }) {
                       data-te-dropdown-menu-ref
                     >
                       <li className=" py-2 px-4">
-                        <NavLink > Login </NavLink>
+                        <Link to="/login"  > Login </Link>
                       </li>
                       <li className=" py-2 px-4">
-                        <NavLink > Vender </NavLink>
+                        <Link to="/venderdetail" > Vender </Link>
                       </li>
                       <li className=" py-2 px-4">
-                        <NavLink > Profile </NavLink>
+                        <Link to="/profile" > Profile </Link>
                       </li>
                       <li className=" py-2 px-4">
-                        <NavLink > Update Profile </NavLink>
+                      <Link to="/editprofile" > Update Profile </Link>
                       </li>
                     </ul>
                   </div>

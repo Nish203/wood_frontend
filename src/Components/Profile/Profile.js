@@ -1,70 +1,159 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Profile = () => {
-  return (
-    <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-    <div class="container max-w-screen-lg mx-auto">
-      <div>
-        <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-            <div class="text-gray-600">
-              <p class="font-medium text-lg"> Profile</p>
-              <p>Please fill out all the fields.</p>
+export default function Profile() {
+
+    let userData = JSON.parse(localStorage.getItem("userData"))
+    return (
+        <div> <br />
+            <br />
+            <style>
+                <>
+                    body{"{"}
+                    margin-top:20px; color: #1a202c; text-align: left; background-color: #e2e8f0;
+                    {"}"}
+                    .main-body {"{"}
+                    padding: 15px;
+                    {"}"}
+                    .card {"{"}
+                    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+                    {"}"}
+                    .card {"{"}
+                    position: relative; display: flex; flex-direction: column; min-width: 0;
+                    word-wrap: break-word; background-color: #fff; background-clip: border-box;
+                    border: 0 solid rgba(0,0,0,.125); border-radius: .25rem;
+                    {"}"}
+                    .card-body {"{"}
+                    flex: 1 1 auto; min-height: 1px; padding: 1rem;
+                    {"}"}
+                    .gutters-sm {"{"}
+                    margin-right: -8px; margin-left: -8px;
+                    {"}"}
+                    .gutters-sm&gt;.col, .gutters-sm&gt;[class*=col-] {"{"}
+                    padding-right: 8px; padding-left: 8px;
+                    {"}"}
+                    .mb-3, .my-3 {"{"}
+                    margin-bottom: 1rem!important;
+                    {"}"}
+                    .bg-gray-300 {"{"}
+                    background-color: #e2e8f0;
+                    {"}"}
+                    .h-100 {"{"}
+                    height: 100%!important;
+                    {"}"}
+                    .shadow-none {"{"}
+                    box-shadow: none!important;
+                    {"}"}
+                </>
+
+            </style>
+
+            <div className="container">
+                <div className="main-body">
+
+                    <div className="row gutters-sm" >
+                        <div className="col-md-4 mb-3">
+                            <div className="card">
+                                <div className="card-body" style={{ height: "523px" }}><br /><br /><br />
+                                    <div className="d-flex flex-column align-items-center text-center">
+                                        <img
+                                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                            alt="Admin"
+                                            className="rounded-circle"
+                                            width={150}
+                                        />
+                                        <div className="mt-3">
+                                            <h4>{userData?.name || "-"}</h4>
+                                            <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <br />
+                                            <button className="btn btn-primary">View Profile</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="col-md-8">
+                            <div className="card mb-3">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Name</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.name || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Email</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.email || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Phone</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.phone || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">City</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.city || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">State</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.state || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Country</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.country || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Pincode</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">{userData?.pincode || "-"}</div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <h6 className="mb-0">Address</h6>
+                                        </div>
+                                        <div className="col-sm-9 text-secondary">
+                                            {userData?.address || "-"}
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                            <Link
+                                                className="btn btn-primary "
+                                                to="/EditProfile"
+                                            >
+                                                Edit
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-  
-            <div class="lg:col-span-2">
-              <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                <div class="md:col-span-5">
-                  <label for="full_name">Full Name</label>
-                  <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  />
-                </div>
-  
-                <div class="md:col-span-5">
-                  <label for="email">Email Address</label>
-                  <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
-                </div>
-  
-                <div class="md:col-span-3">
-                  <label for="address">Address</label>
-                  <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="" />
-                </div>
-  
-                <div class="md:col-span-2">
-                  <label for="city">City</label>
-                  <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
-                </div>
-  
-                <div class="md:col-span-2">
-                <label for="mobile">Mobile no</label>
-                  <input type="mobile" name="mobile" id="mobile" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  placeholder="" />
-                </div>
-  
-                <div class="md:col-span-2">
-                  <label for="state">State</label>
-                  <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                    <input name="state" id="state" placeholder="State" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"  />
-                    
-                  </div>
-                </div>
-  
-                <div class="md:col-span-1">
-                  <label for="zipcode">Pincode</label>
-                  <input type="text" name="zipcode" id="zipcode" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" value="" />
-                </div>
-                <div class="md:col-span-5 text-right">
-                  <div class="inline-flex items-end">
-                    <button class="bg-orange-800 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded">Submit</button>
-                  </div>
-                </div>
-  
-              </div>
-            </div>
-          </div>
+
+
         </div>
-      </div>
-    </div>
-  </div>
-  )
+    )
 }
-
-export default Profile

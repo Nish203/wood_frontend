@@ -16,14 +16,15 @@ import Venderdetail from './Components/Vendor/Venderdetail'
 import Explore from './Components/Home/Explore';
 import Navbar from './Components/Home/Navbar';
 import Nav from './Components/Home/Nav';
+import Footer from './Components/Home/Footer';
 
 
 
 const Routerr = () => {
   return (
     <div>
-        <Home/>
-        
+        {/* <Home/> */}
+
         {/* <Navbar/>
         <Explore/> */}
         {/* <Changepassword/>
@@ -31,14 +32,25 @@ const Routerr = () => {
         <Otppassword/>
         <Profile/>
         <Editprofile/> 
-        <Venderdetail/> */}
-        {/* <BrowserRouter>
+      <Venderdetail/> */}
+        <BrowserRouter>
+      <Navbar/>
             <Routes>
-              <Route path="/" element={<Login />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgotpassword" element={<Forgotpass />} /> 
+              <Route path="/changepassword" element={<Changepassword />} /> 
+              <Route path="/resetpassword" element={<Resetpassword />} /> 
+              <Route path="/otppassword" element={<Otppassword />} /> 
+              <Route path="/profile" element={<Profile />} /> 
+              <Route path="/editprofile" element={<Editprofile />} /> 
+              <Route path="/venderdetail" element={<Venderdetail />} /> 
+              {/* <Route path="/forgotpassword" element={<Forgotpass />} />  */}
             </Routes>
-        </BrowserRouter> */}
+        <Footer/>
+        </BrowserRouter>
+
         {/* <Footer/>
         <Addproduct/> */}
     </div>

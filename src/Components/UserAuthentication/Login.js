@@ -1,9 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import img1 from '../images/login1.jpeg'
-import  {Link}  from 'react-router-dom'
+import  {Link, useNavigate}  from 'react-router-dom'
+import axios from 'axios';
+import { baseUrl } from '../BaseUrl/BaseUrl';
+import { toast } from 'react-toastify';
+import { ErrorToast, SuccessToast } from '../../Toast';
 
 
 function Login() {
+  const navigate = useNavigate();
+  const [credetials, setCredetials] = useState({ email: "", password: "" });
+  const [errMsg, setErrMsg] = useState(false)
+  function updateData(e) {
+    setCredetials({ ...credetials, [e.target.name]: e.target.value });
+  }
+  const loginHandler = async (e) => {
+    e.preventDefault()
+    if (credetials?.email && credetials?.password) {
+      await axios.post(baseUrl + "users/login", credetials).then((res) => {
+        console.log('res', res)
+        localStorage.setItem("token", res?.data?.token)
+        localStorage.setItem("userData", JSON.stringify(res?.data?.user))
+        setCredetials({
+          email: "", password: ""
+        })
+        setErrMsg(false)
+        toast.success(res?.data.message)
+        SuccessToast(res?.data.message)
+        navigate("/")
+      }).catch((err) => {
+        console.log('err', err)
+        toast.error(err?.response?.data.message)
+        ErrorToast(err?.response?.data.message)
+      })
+    } else {
+      setErrMsg(true)
+    }
+  }
   return (
     <div>
        <section class="bg-gray-50 min-h-screen flex items-center justify-center">
@@ -14,13 +47,20 @@ function Login() {
       <h2 class="font-bold text-2xl text-[#7f5539]">Login</h2>
       <p class="text-sm mt-4 text-[#7f5539]">If you are already a member, easily Log in</p>
 
-      <form action="" class="flex flex-col gap-4">
-        <input class="p-2 mt-8 rounded-xl border text-black" type="email" name="email" placeholder="Email" required/>
-        <div class="relative">
-          <input class="p-2 rounded-xl border w-full text-black" type="password" name="password" placeholder="Password" required/>
-         
+      <form action="" class="flex flex-col">
+        <input class="p-2 mt-8 rounded-xl border text-black mb-2"  name="email" value={credetials?.email}
+                    onChange={(e) => {
+                      updateData(e);
+                    }} placeholder="Email" required/>
+                    {errMsg && !credetials?.email && <div className="text-danger text-start mb-2">Email is required!</div>}
+        <div class="relative mb-4">
+          <input class="p-2 rounded-xl border w-full text-black" type="password" name="password" value={credetials?.password}
+                    onChange={(e) => {
+                      updateData(e);
+                    }} placeholder="Password" required/>
+          {errMsg && !credetials?.password && <div className="text-danger text-start mt-2">Password is required!</div>}
         </div>
-        <button class="bg-[#7f5539] rounded-xl text-white py-2 hover:scale-105 duration-300">Login</button>
+        <button class="bg-[#7f5539] rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={(e) => loginHandler(e)}>Login</button>
       </form>
 
       <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
@@ -29,7 +69,7 @@ function Login() {
         <hr class="border-gray-400"/>
       </div>
       <div class="mt-5 ml-10 text-sm  py-4 text-[#7f5539]">
-      <Link to="forgotpassword"> <p>Forgot your password ? </p> </Link>
+      <Link to="/forgotpassword"> <p>Forgot your password ? </p> </Link>
       </div>
 
       <div class="mt-1 text-sm flex justify-between items-center text-[#7f5539]">
