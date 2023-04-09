@@ -21,7 +21,7 @@ const Help = () => {
         </div>
         <div class="mt-4 flex justify-between">
           <div>
-            <h3 class="text-lg text-black transition delay-100 hover:-translate-y-1 hover:scale-90 duration-300">
+            <h3 class="text-lg text-black ">
               <NavLink>
                 <span aria-hidden="true" class="absolute inset-0"></span>
                Here How To Choose The Right Sofa
@@ -39,7 +39,7 @@ const Help = () => {
         </div>
         <div class="mt-4 flex justify-between">
           <div>
-            <h3 class="text-lg text-black transition delay-100  hover:-translate-y-1 hover:scale-90 duration-300">
+            <h3 class="text-lg text-black ">
               <NavLink>
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 How To Buy A Perfect Bed For Your Room
@@ -57,7 +57,7 @@ const Help = () => {
         </div>
         <div class="mt-4 flex justify-between">
           <div>
-            <h3 class="text-lg text-black transition delay-100  hover:-translate-y-1 hover:scale-90 duration-300">
+            <h3 class="text-lg text-black">
               <NavLink>
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 Everything About Cabinets And Table
@@ -75,7 +75,7 @@ const Help = () => {
         </div>
         <div class="mt-4 flex justify-between">
           <div>
-            <h3 class="text-lg text-black transition delay-100  hover:-translate-y-1 hover:scale-90 duration-300">
+            <h3 class="text-lg text-black ">
               <NavLink>
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 What To Look For While Buying A Chair

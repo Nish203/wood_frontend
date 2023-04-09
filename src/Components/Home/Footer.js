@@ -1,10 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import logo from '../images/logo.png'
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
 <div>
-<footer class="relative z-10 bg-white  pt-10 pb-5 lg:pt-[120px] lg:pb-20">
+<footer class="relative z-10 bg-[#ffedd5]  pt-3 pb-3 lg:pt-[120px] lg:pb-20">
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4 sm:w-2/3 lg:w-3/12 ">
@@ -27,14 +29,14 @@ const Footer = () => {
       </div>
       <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
         <div class="mb-10 w-full">
-          <h4 class="text-dark mb-9 text-lg font-semibold">Resources</h4>
+          <h4 class="text-dark mb-4 ml-10 text-lg font-semibold">Policy</h4>
           <ul>
             <li>
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                SaaS Development
+                Privacy Policy
               </a>
             </li>
             <li>
@@ -42,7 +44,7 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                Our Products
+                Term of service
               </a>
             </li>
             <li>
@@ -50,7 +52,7 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                User Flow
+                Warranty
               </a>
             </li>
             <li>
@@ -58,22 +60,24 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                User Strategy
+                Refund/Exchange
               </a>
             </li>
           </ul>
         </div>
       </div>
+
       <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
         <div class="mb-10 w-full">
-          <h4 class="text-dark mb-9 text-lg font-semibold">Company</h4>
+          <h4 class="text-dark mb-4 ml-10 text-lg font-semibold">Support</h4>
           <ul>
             <li>
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
+                onClick={()=> navigate("/contact")}
               >
-                About TailGrids
+                Contact Us
               </a>
             </li>
             <li>
@@ -81,7 +85,7 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                Contact & Support
+                FAQs
               </a>
             </li>
             <li>
@@ -89,37 +93,32 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                Success History
+                Share Review
               </a>
             </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
-              >
-                Setting & Privacy
-              </a>
-            </li>
+            
           </ul>
         </div>
       </div>
       <div class="w-full px-4 sm:w-1/2 lg:w-2/12">
         <div class="mb-10 w-full">
-          <h4 class="text-dark mb-9 text-lg font-semibold">Quick Links</h4>
+          <h4 class="text-dark mb-4 ml-7 text-lg font-semibold ">Useful Links</h4>
           <ul>
             <li>
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
-              >
-                Premium Support
+                onClick={()=> navigate("/about")}
+                >
+                About Us
               </a>
             </li>
             <li>
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
-              >
+                onClick={()=> navigate("/custom")}
+                >
                 Our Services
               </a>
             </li>
@@ -127,8 +126,10 @@ const Footer = () => {
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
+                onClick={()=> navigate("/blog")}
+
               >
-                Know Our Team
+                Blog
               </a>
             </li>
             <li>
@@ -136,7 +137,7 @@ const Footer = () => {
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
               >
-                Download App
+                Our Team
               </a>
             </li>
           </ul>
@@ -144,11 +145,11 @@ const Footer = () => {
       </div>
       <div class="w-full px-4 sm:w-1/2 lg:w-3/12">
         <div class="mb-10 w-full">
-          <h4 class="text-dark mb-9 text-lg font-semibold">Follow Us On</h4>
+          <h4 class="text-dark mb-4 mr-3 text-lg font-semibold">Follow Us On</h4>
           <div class="mb-6 flex items-center">
             <a
               href="javascript:void(0)"
-              class="text-dark hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+              class="text-dark hover:bg-white hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
             >
               <svg
                 width="8"
@@ -163,7 +164,7 @@ const Footer = () => {
             </a>
             <a
               href="javascript:void(0)"
-              class="text-dark hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+              class="text-dark hover:bg-white hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
             >
               <svg
                 width="16"
@@ -178,7 +179,7 @@ const Footer = () => {
             </a>
             <a
               href="javascript:void(0)"
-              class="text-dark hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+              class="text-dark hover:bg-white hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
             >
               <svg
                 width="16"
@@ -193,7 +194,7 @@ const Footer = () => {
             </a>
             <a
               href="javascript:void(0)"
-              class="text-dark hover:bg-primary hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
+              class="text-dark hover:bg-white hover:border-primary mr-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#E5E5E5] hover:text-white sm:mr-4 lg:mr-3 xl:mr-4"
             >
               <svg
                 width="14"
@@ -207,7 +208,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-          <p class="text-body-color text-base">&copy; 2025 TailGrids</p>
+        
         </div>
       </div>
     </div>

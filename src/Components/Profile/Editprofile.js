@@ -1,23 +1,29 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ErrorToast, SuccessToast } from '../../Toast'
+// import { toast } from 'react-toastify'
 import { baseUrl } from '../BaseUrl/BaseUrl'
+import { ErrorToast, SuccessToast } from '../../Toast'
 
-export default function Editprofile() {
+export default function EditProfile() {
+    let config = {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token")
+        }
+    }
     let userData = JSON.parse(localStorage.getItem("userData"))
     const navigate = useNavigate()
-
+    const [image, setImage] = useState(userData?.image || "")
     const [newData, setNewData] = useState({
-        name: userData?.name,
-        email: userData?.email,
-        phone: userData?.phone,
-        address: userData?.address,
-        city: userData?.city,
-        state: userData?.state,
-        country: userData?.country,
-        pincode: userData?.pincode,
-        address: userData?.address,
+        name: userData.name,
+        email: userData.email,
+        phone: userData.phone,
+        address: userData.address,
+        city: userData.city,
+        state: userData.state,
+        country: userData.country,
+        pincode: userData.pincode,
+        address: userData.address,
     })
 
     const handleChange = (e) => {
@@ -26,40 +32,77 @@ export default function Editprofile() {
     }
     console.log('newData', newData)
     const handleSubmit = async () => {
-        if (newData?.name && newData?.email) {
-            let body = {
-                name: newData?.name,
-                phone: Number(newData?.phone),
-                address: newData?.address,
-                city: newData?.city,
-                state: newData?.state,
-                country: newData?.country,
-                pincode: Number(newData?.pincode),
+        if (newData?.phone) {
+           
+                if (newData?.name && newData?.email) {
+                    let body = {
+                        name: newData?.name,
+                        phone: Number(newData?.phone),
+                        address: newData?.address,
+                        city: newData?.city,
+                        state: newData?.state,
+                        country: newData?.country,
+                        pincode: Number(newData?.pincode),
+                        image
+                    }
+
+                    await axios.put(baseUrl + "users/update-user", body, config).then((res) => {
+                        console.log('res', res)
+                        SuccessToast(res?.data?.message)
+                        localStorage.setItem("userData", JSON.stringify(res?.data?.user))
+                        navigate("/profile")
+                    }).catch((err) => {
+                        console.log('err', err)
+                        ErrorToast(err?.response?.data.message)
+                    })
+                } else {
+                    ErrorToast("Name is Required!")
+                
             }
-            let config = {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem("token")
-                }
-            }
-            await axios.put(baseUrl + "users/update-user", body, config).then((res) => {
-                console.log('res', res)
-                SuccessToast(res?.data?.message)
-                localStorage.setItem("userData", JSON.stringify(res?.data?.user))
-                navigate("/profile")
-            }).catch((err) => {
-                console.log('err', err)
-            })
         } else {
-            // toast.error("Name is Required!")
-            ErrorToast("Name is Required!")
+            if (newData?.name && newData?.email) {
+                let body = {
+                    name: newData?.name,
+                    phone: Number(newData?.phone),
+                    address: newData?.address,
+                    city: newData?.city,
+                    state: newData?.state,
+                    country: newData?.country,
+                    pincode: Number(newData?.pincode),
+                    image
+                }
+
+                await axios.put(baseUrl + "users/update-user", body, config).then((res) => {
+                    console.log('res', res)
+                    SuccessToast(res?.data?.message)
+                    localStorage.setItem("userData", JSON.stringify(res?.data?.user))
+                    navigate("/profile")
+                }).catch((err) => {
+                    console.log('err', err)
+                })
+            } else {
+                ErrorToast("Name is Required!")
+            }
         }
+
+    }
+    const handleIamge = async (e) => {
+        console.log('e.target', e.target)
+        const formdata = new FormData()
+        formdata.append("image", e.target.files[0])
+        await axios.post(baseUrl + "image/upload-image", formdata, config).then((res) => {
+            console.log('res', res)
+            setImage(res?.data?.url)
+        }).catch((err) => {
+            console.log('err', err)
+        })
     }
     return (
         <div>  <br /><br />
             <style>
                 <>
                     body{"{"}
-                    margin-top:20px; color: #1a202c; text-align: left; background-color: #e2e8f0;
+                    color: #1a202c; text-align: left; background-color: #e2e8f0;
                     {"}"}
                     .main-body {"{"}
                     padding: 15px;
@@ -86,16 +129,23 @@ export default function Editprofile() {
                                 <div className="card-body" style={{ height: "567px" }}><br /><br /><br /><br />
                                     <div className="d-flex flex-column align-items-center text-center">
                                         <img
-                                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                            src={image !== "" ? image : "https://bootdey.com/img/Content/avatar/avatar7.png"}
                                             alt="Admin"
                                             className="rounded-circle"
                                             width={150}
+                                            height={150}
+                                            style={{ height: "150px" }}
                                         />
                                         <div className="mt-3">
                                             <h4>{newData?.name}</h4>
-                                            <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <p className="text-secondary mb-1">{userData?.role === "640a11bf7387cfb8e11df200" ? "Vendor" : "User"}</p>
                                             <br />
-                                            <button className="btn btn-primary">Edit Profile</button>
+                                            <label htmlFor="fileUpload">
+                                                <div>
+                                                    <h3 className='btn btn-primary'>Edit Profile Photo</h3>
+                                                </div>
+                                            </label>
+                                            <input hidden id="fileUpload" onChange={handleIamge} type="file" accept="image/png, image/jpg, image/jpeg , image/webp" />
 
                                         </div>
                                     </div>
@@ -198,8 +248,9 @@ export default function Editprofile() {
                                         </div>
                                         <div className="col-sm-9 text-secondary">
                                             <input
-                                                type="text"
+                                                type="number"
                                                 name="pincode"
+                                                min={0}
                                                 value={newData?.pincode}
                                                 onChange={(e) => handleChange(e)}
                                                 className="form-control"

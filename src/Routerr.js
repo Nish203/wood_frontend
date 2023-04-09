@@ -7,7 +7,7 @@ import Editprofile from './Components/Profile/Editprofile';
 import Profile from './Components/Profile/Profile'
 import Changepassword from './Components/UserAuthentication/Changepassword'
 import Forgotpass from './Components/UserAuthentication/Forgotpass'
-import Login from './Components/UserAuthentication/Login'
+import Login from './Components/UserAuthentication/Login'    
 import Otppassword from './Components/UserAuthentication/Otppassword'
 import Register from './Components/UserAuthentication/Register'
 import Resetpassword from './Components/UserAuthentication/Resetpassword'
@@ -15,26 +15,43 @@ import Addproduct from './Components/Vendor/Addproduct';
 import Venderdetail from './Components/Vendor/Venderdetail'
 import Explore from './Components/Home/Explore';
 import Navbar from './Components/Home/Navbar';
-import Nav from './Components/Home/Nav';
+import Productdetail from './Components/Product/Productdetail';
+import Shoppage from './Components/Shop/Shoppage';
+
 import Footer from './Components/Home/Footer';
+import Venderview from './Components/Vendor/Venderview';
+import UpdateProduct from './Components/Vendor/UpdateProduct';
+import Addtocart from './Components/Shop/Addtocart';
+import Blog from './Components/Blog/Blog';
+import Custom from './Components/Service/Custom';
+import Address from './Components/Payment/Address';
+import Payment from './Components/Payment/Payment';
+import Contact from './Components/Contact/Contact';
+import About from './Components/Contact/About';
+import Wishlist from './Components/Shop/Wishlist';
+import Pending from './Components/Vendor/Pending';
+import Chair from './Components/Product/Chair';
+import Bed from './Components/Product/Bed';
+import Cabinet from './Components/Product/Cabinet';
+import Consoles from './Components/Product/Consoles';
+import Exclusive from './Components/Product/Exclusive';
+import GiftItems from './Components/Product/GiftItems';
+import Table from './Components/Product/Table';
+import Card from './Components/Card';
+import CheckoutSuccess from './Components/Shop/CheckoutSuccess';
+import Writereview from './Components/Review/Writereview';
+import Profile1 from './Components/Profile/Profile1';
+import Editprofile1 from './Components/Profile/Editprofile1';
 
 
 
 const Routerr = () => {
+  const pathName = window.location.pathname.split("/")[1]
+  console.log('pathName', pathName)
   return (
     <div>
-        {/* <Home/> */}
-
-        {/* <Navbar/>
-        <Explore/> */}
-        {/* <Changepassword/>
-        <Resetpassword/>
-        <Otppassword/>
-        <Profile/>
-        <Editprofile/> 
-      <Venderdetail/> */}
         <BrowserRouter>
-      <Navbar/>
+      {pathName === "addtocart" ? "" :<Navbar/>}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -46,13 +63,39 @@ const Routerr = () => {
               <Route path="/profile" element={<Profile />} /> 
               <Route path="/editprofile" element={<Editprofile />} /> 
               <Route path="/venderdetail" element={<Venderdetail />} /> 
-              {/* <Route path="/forgotpassword" element={<Forgotpass />} />  */}
+              <Route path="/productdetail/:id" element={<Productdetail />} /> 
+              <Route path="/shoppage" element={<Shoppage />} /> 
+              <Route path="/addproduct" element={<Addproduct />} /> 
+              <Route path="/updateproduct/:id" element={<UpdateProduct />} /> 
+              <Route path="/venderview" element={<Venderview />} /> 
+              <Route path="/addtocart" element={<Addtocart />} /> 
+              <Route path="/blog" element={<Blog />} /> 
+              <Route path="/custom" element={<Custom />} /> 
+              <Route path="/address" element={<Address />} /> 
+              <Route path="/payment" element={<Payment />} /> 
+              <Route path="/contact" element={<Contact />} /> 
+              <Route path="/about" element={<About />} /> 
+              <Route path="/wishlist" element={<Wishlist />} /> 
+              <Route path="/pending" element={<Pending />} /> 
+              <Route path="/chair" element={<Chair />} /> 
+              <Route path="/bed" element={<Bed />} /> 
+              <Route path="/cabinet" element={<Cabinet />} /> 
+              <Route path="/consoles" element={<Consoles />} /> 
+              <Route path="/exclusive" element={<Exclusive />} /> 
+              <Route path="/giftItems" element={<GiftItems />} /> 
+              <Route path="/table" element={<Table />} /> 
+              <Route path="/card" element={<Card />} /> 
+              <Route path="/checkoutSuccess" element={<CheckoutSuccess />} /> 
+              <Route path="/writereview" element={<Writereview />} /> 
+              <Route path="/profile1" element={<Profile1 />} /> 
+              <Route path="/editProfile1" element={<Editprofile1 />} /> 
+              
+             
             </Routes>
-        <Footer/>
+        {pathName === "addtocart" ? "" :<Footer/>}
         </BrowserRouter>
 
-        {/* <Footer/>
-        <Addproduct/> */}
+        
     </div>
   )
 }

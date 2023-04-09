@@ -1,102 +1,101 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 import {FaQuoteLeft} from 'react-icons/fa'
-import {AiFillStar} from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import { baseUrl } from '../BaseUrl/BaseUrl'
+import { useEffect } from 'react'
+import {AiFillStar} from "react-icons/ai"
 
 
 const Reviewslide = () => {
+  let config = {
+    headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
+    }
+}
+  const [data,setData] = useState([])
+  const getData = async() =>{
+    await axios.get(baseUrl + "review/getReview",config).then((res)=>{
+      console.log('res', res)
+      setData(res?.data?.review)
+    }).catch((err)=>{
+      console.log('err', err)
+    })
+      }
+      useEffect(()=>{
+        getData()
+      },[])
   return (
     
   
 
  
-<section class="mb-20 text-gray-700 px-6">
-  <div class="text-center md:max-w-xl lg:max-w-3xl mx-auto">
-    <h3 class="text-3xl  mb-16 text-gray-800 "> Customer Review </h3>
-   
+<section class="mb-20 text-gray-700 px-10 ">
+  <div class="flex max-w-8xl mx-auto">
+    <h3 class="text-3xl  mb-16 text-gray-800 ml-96  "> Customer Review </h3>
+    <div className=' ml-80 '>
+      <Link to="/writereview"><button className=' item-right py-2 px-4 fond-bold tarcking-wide leading-7 text-white bg-black rounded hover:shadow-xl '> Add Review </button></Link>
+    </div>
   </div>
 
-  <div class=" grid md:grid-cols-3 gap-6 lg:gap-12 text-center">
-    <div class="  mb-12 md:mb-0">
+  <div class=" px-2 grid md:grid-cols-3 gap-5 lg:gap-12">
+    {data?.map ((val,i)=>{
+      if(i<=2){
+        return(
+          <div class=" px-3 py-3 mb-12 md:mb-0 block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
       
-      <h5 class="text-xl font-semibold mb-4">Maria Smantha</h5>
-      <h6 class="font-semibold text-primary mb-4">Web Developer</h6>
+      <h5 class="text-xl font-semibold mb-3">{val?.name}</h5>
+      <div class="flex   mt-3 mb-3">
+          {/* <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <svg aria-hidden="true" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <svg aria-hidden="true" class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> */}
+        {val?.rating === 5 ? <>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                </> : val?.rating === 4 ? <>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar />
+                </>  :val?.rating === 3 ? <>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar/>
+                <AiFillStar />
+                </> : val?.rating === 2 ? <>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar color="rgb(255, 215, 0)"/>
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                </> : val?.rating === 1 ? <>
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                </> : ""}
+      </div>
+      
       <p class="mb-4">
        <FaQuoteLeft class="w-6 pr-2 inline-block"/>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic
-        tenetur quae quaerat ad velit ab hic tenetur.
+        {val?.review}
       </p>
-      <ul class="flex justify-center mb-0">
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-      </ul>
+     
     </div>
-    <div class="   mb-12 md:mb-0">
-      
-      <h5 class="text-xl font-semibold mb-4">Lisa Cudrow</h5>
-      <h6 class="font-semibold text-primary mb-4">Graphic Designer</h6>
-      <p class="mb-4">
-      <FaQuoteLeft class="w-6 pr-2 inline-block"/>
-        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
-        laboriosam, nisi ut aliquid commodi.
-      </p>
-      <ul class="flex justify-center mb-0">
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-      </ul>
-    </div>
-    <div class="  mb-0">
-      
-      <h5 class="text-xl font-semibold mb-4">John Smith</h5>
-      <h6 class="font-semibold text-primary mb-4">Marketing Specialist</h6>
-      <p class="mb-4">
-      <FaQuoteLeft class="w-6 pr-2 inline-block"/>
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-        praesentium voluptatum deleniti atque corrupti.
-      </p>
-      <ul class="flex justify-center mb-0">
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-        <li>
-        <AiFillStar size={20} class=" text-yellow-500"/>
-        </li>
-      </ul>
-    </div>
+        )
+      }
+    })}
+    
+    
     
   </div>
 </section>

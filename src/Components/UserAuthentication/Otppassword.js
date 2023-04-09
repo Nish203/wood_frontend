@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { Component, useState } from 'react';
-import OtpInput from 'react-otp-input';
+import OTPInput,{
+  ResendOTP } from 'otp-input-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ErrorToast, SuccessToast } from '../../Toast';
 import { baseUrl } from '../BaseUrl/BaseUrl';
-import img1 from '../images/reset.jpeg'
+import img1 from '../images/reset.jpeg';
+import { Link } from 'react-router-dom';
 
 // export default class Otppassword extends Component {
 //   state = { otp: '' };
@@ -51,16 +53,18 @@ function Otppassword() {
     const [errMsg, setErrMsg] = useState(false)
 
     const resendOtp = async (e) => {
-      e.preventDefault()
+      console.log('e', e)
+      // e.preventDefault()
         let body = {
             email: localStorage.getItem("email")
         }
         await axios.post(baseUrl + "users/forgot-password", body).then((res) => {
             console.log('res', res)
-            toast.success(res?.data.message)
+            SuccessToast(res?.data.message)
             navigate("/otppassword")
         }).catch((err) => {
             console.log('err', err)
+            ErrorToast(err?.response?.data.message)
         })
     }
     const otpVerify = async (e) => {
@@ -92,18 +96,21 @@ function Otppassword() {
   
       <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
    
-      <div class="md:w-1/2 px-8 md:px-16">
+      <div class="md:w-1/2 px-8">
       <h2 class="font-bold text-2xl mb-11 text-[#7f5539]">Enter OTP </h2>
       
 
-      <form action="" class="flex flex-col gap-4">
+      <form action="" class="flex flex-col gap-4 ">
       
-        <OtpInput className='h-full w-full py-1 ' 
-          value={otp}
-          onChange={setOtp}
-          numInputs={6}
-        />
-        <button class="bg-[#7f5539] rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={otpVerify}>Submit</button>
+      <OTPInput value={otp} onChange={setOtp} autoFocus OTPLength={6} otpType="number" disabled={false} secure />
+
+        
+<ResendOTP onResendClick={(e) => resendOtp(e)} />
+        {errMsg && !otp && <div className="text-danger text-start mt-2">Otp is required!</div>}
+        <button class="bg-[#7f5539] rounded  w-28 text-white py-2 hover:scale-105 duration-300" onClick={otpVerify}>Submit</button>
+        <div class=" text-sm  text-l">
+      {/* <Link to=""> <p> Reset OTP </p> </Link> */}
+      </div>
       </form>
     </div>
     <div class="md:block hidden w-1/2">

@@ -1,218 +1,287 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import img1 from "../images/website/dining/dining__2.webp";
+import { BsHandbagFill, BsFillSuitHeartFill } from "react-icons/bs";
+import {IoIosHeartDislike} from "react-icons/io"
+import axios from "axios";
+import { baseUrl } from "../BaseUrl/BaseUrl";
+import { useEffect } from "react";
+import {FaBuysellads} from 'react-icons/fa'
+import { useNavigate } from "react-router-dom";
+import { ErrorToast, SuccessToast } from "../../Toast";
 
-import img1 from '../images/website/chair/chair__5.webp'
-import {BsHandbagFill, BsFillSuitHeartFill} from 'react-icons/bs'
-
+// let status = false
 function Productdetail() {
-  let [num, setNum]= useState(0);
-  let incNum =()=>{
-    if(num<20)
+  const id = window.location.pathname
+  let config = {
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem("token")
+    }
+  }
+  const [data,setData] = useState([])
+  console.log('data', data)
+  const [status,setStatus] = useState(false)
+  const [statusData,setStatusData] = useState({})
+  console.log('status', status)
+  const getData = () =>{
+    let data = []
+    let body = {}
+    axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
+        console.log('res', res)
+       data = res?.data?.product.filter((v)=>{
+          if(v?._id === id.split("/")[2]){
+            return v
+          }
+        })
+        setData(data[0])
+    }).catch((err)=>{
+        console.log('err', err)
+    })
+  }
+  const handleSubmit = () =>{
+    let body ={}
+    // setStatus(true)
+    axios.post(baseUrl + `wishlist/add-wishlist?id=${id.split("/")[2]}`,body,config).then((res)=>{
+      console.log('res', res?.data?.create?.isWishlisted)
+      SuccessToast(res?.data?.message)
+      setStatus(res?.data?.create?.isWishlisted)
+  }).catch((err)=>{
+      console.log('err', err)
+  })
+  }
+  const handleUpdate = () =>{
+    let body ={}
+    axios.delete(baseUrl + `wishlist/delete-wishlist?id=${statusData?._id}`,config).then((res)=>{
+      console.log('res', res?.data?.create?.isWishlisted)
+      SuccessToast(res?.data?.message)
+      setStatus(false)
+  }).catch((err)=>{
+      console.log('err', err)
+  })
+  }
+  const getWishList = () =>{
+    let data = []
+    axios.get(baseUrl + "wishlist/get-wishlist",config).then((res)=>{
+      console.log('res', res)
+     data = res?.data?.product.filter((v)=>{
+        if(v?.productId?._id === id.split("/")[2]){
+          return v
+        }
+      })
+      console.log('data11111', data?.length)
+      setStatus(data?.length === 1 ? true : false)
+      setStatusData(data[0])
+  }).catch((err)=>{
+      console.log('err', err)
+  })
+  }
+  const navigate = useNavigate()
+  let json = [
     {
-    setNum(Number(num)+1);
+    name:"test",
+    category:"test",
+    quntity:2,
+    price:500,
+  },
+  {
+    name:"demo",
+    category:"demo",
+    quntity:2,
+    price:500,
+  }]
+  const [dataBuy,setDataBuy] = useState(json)
+
+  // const handleSubmitBuy = (e) =>{
+  //   let config = {
+  //     headers: {
+  //       'Authorization': 'Bearer ' + localStorage.getItem("token")
+  //     }
+  //   }
+  //   e.preventDefault()
+  //   console.log('data', data)
+  //   axios.post(baseUrl + "product/buy-product",dataBuy,config).then((res)=>{
+  //     console.log('res', res)
+  //     if(res?.data?.data){
+  //       window.open(res?.data?.data)
+  //     }
+  //   }).catch((err)=>{
+  //     console.log('err', err)
+  //   })
+  // }
+  const handleSubmit1 = (id) =>{
+    let body={
+        productId:id,
+        productQuantity:1
+    }
+    axios.post(baseUrl +`product/addToCart`,body,config).then((res)=>{
+        console.log('res', res)
+        SuccessToast(res?.data?.message)
+        getData()
+    }).catch((err)=>{
+        console.log('err', err)
+        ErrorToast(err?.response?.data?.message)
+    })
+  }
+  const handleSubmit2 = (id) =>{
+    let body={
+        productId:id,
+        productQuantity:1
+    }
+    axios.post(baseUrl +`product/addToCart`,body,config).then((res)=>{
+        console.log('res', res)
+        // SuccessToast(res?.data?.message)
+        navigate("/addtocart")
+        getData()
+    }).catch((err)=>{
+        console.log('err', err)
+        ErrorToast(err?.response?.data?.message)
+    })
+  }
+  useEffect(()=>{
+    getData()
+    getWishList()
+  },[status])
+  let [num, setNum] = useState(0);
+  let incNum = () => {
+    if (num < 20) {
+      setNum(Number(num) + 1);
     }
   };
   let decNum = () => {
-     if(num>0)
-     {
+    if (num > 0) {
       setNum(num - 1);
-     }
-  }
- let handleChange = (e)=>{
-   setNum(e.target.value);
-  } 
+    }
+  };
+  let handleChange = (e) => {
+    setNum(e.target.value);
+  };
 
   return (
-    <div className=''>
-     
-    
-    <div className=''>
-    <div className="container md:grid grid-cols-2  mt-16 ml-10 overflow-hidden">
-{/* product image */}
+    <div>
+      <div className="grid sm:grid-cols-2  ml-10 py-10 ">
         <div>
-             <img src={img1} className='w-9/12 h-4/6'></img><br />
-        
-        <div className="grid grid-cols-4 mr-3">
-            <img src={img1} className='w-36 cursor-pointer border border-primary' />
-          
-            <img src={img1} className='w-36 cursor-pointer border  border-primary'/>
-            
-            <img src={img1} className='w-36 cursor-pointer border border-primary' />
-            <img src={img1} className='w-36 cursor-pointer border border-primary' />
+          <img src={data?.image} className="w-10/12 " style={{height:"100%"}}></img>
+          <br />
         </div>
-        </div>
+        <div className="mt-5">
+          <h3 className="text-3xl font-medium uppercase flex items-center mb-4">
+            {" "}
+            {data?.name}{" "}
+          </h3>
+          {/* Details */}
+          <div className="space-y-1 ">
+           
 
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+              <span className="text-gray-800 font-semibold"> Item:</span>
+              <span className="text-gray-600"> {data?.category?.name}</span>
+            </p>
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+              <span className="text-gray-800 font-semibold">Item Type:</span>
+              <span className="text-gray-600"> {data?.subCategory?.name}</span>
+            </p>
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+              <span className="text-gray-800 font-semibold"> Material:</span>
+            <span className="text-gray-600"> {data?.material} </span>
+            </p>
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+              <span className="text-gray-800 font-semibold"> Size :</span>
+              <span className="text-gray-600"> {data?.size} inch</span>
+            </p>
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+              <span className="text-gray-800 font-semibold"> Ship by:</span>
+              <span className="text-gray-600"> {data?.shippingDays} Day </span>
+            </p>
 
-        
-        
-    {/* product content */}
- 
-    <div className=''>
-<h2 className='text-3xl font-medium uppercase flex items-center mb-4'> Stag wood</h2>
-<div className='flex items-center mb-4'>
-<ul class="flex justify-center">
-  <li>
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-      <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-    </svg>
-  </li>
-  <li>
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-      <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-    </svg>
-  </li>
-  <li>
-    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-      <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
-    </svg>
-  </li>
-  <li>
-    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="w-4 text-yellow-500 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-      <path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
-    </svg>
-  </li>
-  <li>
-    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="w-4 text-yellow-500" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-      <path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path>
-    </svg>
-  </li>
-</ul>
-<div className='text-xs text-gray-500 ml-3'>(150 Reviews)  
-
-</div>
-</div>
-<div className='space-y-2'>
-<p className='text-gray-800 font-semibold space-x-2 flex items-center mb-4'>
-  <span> Availability:</span>
-  <span className='text-green-600'> In Stock</span>
-</p>
-<p className='text-gray-800 font-semibold space-x-2 flex items-center mb-4'>
-  <span className='text-gray-800 font-semibold'> Brand:</span>
-  <span className='text-gray-600'> Apex</span>
-</p>
-<p className='text-gray-800 font-semibold space-x-2 flex items-center mb-4'>
-  <span className='text-gray-800 font-semibold'> Category:</span>
-  <span className='text-gray-600'> Sofa</span>
-</p>
-
-
-</div>
-<div className='sm flex items-baseline mb-1 space-x-2 font-roboto mt-4'>
-  <p className='text-2xl text-primary font-semibold'>₹ 35000</p>
-  <p className='text-base text-gray-400 line-through'>₹ 40000</p>
-</div>
-<p className='mt-4 text-gray-600 mr-6 text-left'>
-The frame of a sofa is made most often wood, though newer options include
- steel, plastic, and laminated boards or a combination of the above
-</p>
-{/* size filter */}
-
-{/* <div className='pt-4'>
-    <h3 className='text-sm text-gray-800 uppercase flex items-center mb-4'>Size</h3>
-    <div className='flex items-center gap-2'>
-      <div className='size-selector'>
-      
-        <input type="radio" name="size" class="hidden " id="size-xs"/>
-        <label for="size-xs" class="text-s border border-gray-200  rounded-sm h-6 w-6 cursor-pointer shadow-sm block" >
-          
-         XS
-         
-        </label>
-        
-      </div>
-
-      <div className='size-selector'>
-        <input type="radio" name="size" class="hidden" id="size-s"/>
-        <label for="size-s" class="text-s border border-gray-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block" >
-          S
-        </label>
-      </div>
-
-      <div className='size-selector'>
-        <input type="radio" name="size" class="hidden" id="size-m"/>
-        <label for="size-m" class="text-s border border-gray-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block" >
-          M
-        </label>
-      </div>
-
-      <div className='size-selector'>
-        <input type="radio" name="size" class="hidden" id="size-l"/>
-        <label for="size-l" class="text-s border border-gray-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block" >
-        L
-        </label>
-      </div>
-
-      <div className='size-selector'>
-        <input type="radio" name="size" class="hidden" id="size-xl"/>
-        <label for="size-xl" class="text-s border border-gray-200 rounded-sm h-6 w-6  flex items-center justify-center cursor-pointer shadow-sm  text-gray-600" >
-          XL
-        </label>
-      </div>
-
-    </div>
-</div> */}
-{/* color filter */}
-
-    {/* singal color */}
-    <div className='color-selector'>
-      <input type="radio" name="color" className='hidden' id="color-white" />
-      
-    
-    </div>
-
-     {/* quantity start */}
-     <div className='mt-4'>
-      <h3 className='text-sm text-gray-800 uppercase flex items-center mb-4 '>Quantity</h3>
-      <div className=' flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max'>
-        <div className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'>
-          
-          <button type='button' onClick={decNum}>-</button>
-         
-         </div>
-        <div className='h-8 w-8 text-base  items-center justify-center'>
-          <input type="text" className='form-control h-8 w-8 items-center justify-center ml-3' value={num} onChange={handleChange} />
-        </div>
-        <div className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'>
-        <button type='button' onClick={incNum}>+</button>
-
-        </div>
-          
+            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2 mt-3">
+              <span className="text-2xl text-primary font-semibold"> ₹{data?.price - data?.discPrice}</span>
+              <span className="text-base text-gray-400 line-through"> ₹{data?.price} </span>
+            </p>
           </div>
-          
+          <div className="mt-4">
+            <span className=" text-gray-800 font-semibold"> Description:</span>
+            <p className=" mt-2 text-gray-600 mr-6 text-left">
+              {data?.desc}
+            </p>
           </div>
-    
-      {/* cart button */}
-      <div className='flex gap-3 border-gray-200 pb-5 mt-6'>
-        <a href="#" class="bg-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition">
-          <i className='fas fa-shopping-bag'><BsHandbagFill/></i>Add to Cart
-        </a>
-        <a href="#" class="bg-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition">
-          <i className='fas fa-heart'><BsFillSuitHeartFill/></i>Wishlist
-        </a>
+          {/* quantity start */}
+          <div className="mt-3 ">
+            <span className="text-gray-800 font-semibold "> Quantity</span>
+            <div className=" mt-3 flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
+              <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
+                <button type="button" onClick={decNum}>
+                  -
+                </button>
+              </div>
+              <div className="h-8 w-12 text-base  items-center justify-center">
+                <input
+                  type="text"
+                  className="form-control h-8 w-9 items-center justify-center"
+                  value={num}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="h-8 w-9 text-xl flex items-center justify-center cursor-pointer select-none">
+                <button type="button" onClick={incNum}>
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
 
+          {/* cart button */}
+          <div className="flex gap-3 border-gray-200 pb-5 mt-6">
+            {data?.quantity !== 0 ?<><a
+              href="#"
+              class="bg-yellow-900 text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2  transition"
+              onClick={()=> handleSubmit1(data?._id)}
+            >
+              <i className="fas fa-shopping-bag">
+                <BsHandbagFill />
+              </i>
+              Add to Cart
+            </a>
+            <a
+              href="#"
+              class="bg-yellow-900 text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2  transition"
+              onClick={()=>handleSubmit2(data?._id)}
+            >
+              <i className="fas fa-shopping-bag">
+                <FaBuysellads />
+              </i>
+              Buy Now
+            </a></>:<a
+              href="#"
+              class="bg-yellow-900 text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2  transition"
+            >
+              <i className="fas fa-shopping-bag">
+                <BsHandbagFill />
+              </i>
+              Out of stock
+            </a>}
+            {!status ?  <a
+              href="#"
+              class="bg-yellow-900 text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2  transition"
+              onClick={handleSubmit}
+            >
+              <i className="fas fa-heart">
+                <BsFillSuitHeartFill />
+              </i>
+              Wishlist
+            </a> : <a
+              href="#"
+              class="bg-yellow-900 text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2  transition"
+              onClick={handleUpdate}
+            >
+              <i className="fas fa-heart">
+                <IoIosHeartDislike />
+              </i>
+              UnWishlist
+            </a> }
+          </div>
+        </div>
       </div>
-      
-
-
     </div>
-    </div>
-  </div>
-  {/* product detail */}
- 
-  
-</div>
-
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-  
-  )
+  );
 }
 
-export default Productdetail
+export default Productdetail;

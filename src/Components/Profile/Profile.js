@@ -57,16 +57,17 @@ export default function Profile() {
                                 <div className="card-body" style={{ height: "523px" }}><br /><br /><br />
                                     <div className="d-flex flex-column align-items-center text-center">
                                         <img
-                                            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                            src={userData?.image || "https://bootdey.com/img/Content/avatar/avatar7.png"}
                                             alt="Admin"
                                             className="rounded-circle"
                                             width={150}
+                                            style={{height:"150px"}}
                                         />
                                         <div className="mt-3">
                                             <h4>{userData?.name || "-"}</h4>
                                             <p className="text-secondary mb-1">Full Stack Developer</p>
                                             <br />
-                                            <button className="btn btn-primary">View Profile</button>
+                                            <button className="btn btn-primary" onClick={() => window.open(userData?.image || "https://bootdey.com/img/Content/avatar/avatar7.png","_Blank")}>View Profile</button>
 
                                         </div>
                                     </div>
@@ -138,8 +139,9 @@ export default function Profile() {
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <Link
-                                                className="btn btn-primary "
+                                                className="btn btn-primary text-white"
                                                 to="/EditProfile"
+                                                style={{color:"white"}}
                                             >
                                                 Edit
                                             </Link>

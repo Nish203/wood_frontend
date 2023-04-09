@@ -53,23 +53,23 @@ function Changepassword() {
     <div>
        <section class="bg-gray-50 min-h-screen flex items-center justify-center">
   
-  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-1 items-center">
    
     <div class="md:w-1/2 px-8 md:px-16">
-    <h2 class="font-bold text-2xl mb-11 text-[#7f5539]">Change Password</h2>
+    <h2 class="font-bold text-2xl mb-8 text-[#7f5539]">Change Password</h2>
      
 
       <form action="" class="flex flex-col">
      
      <div className='mb-4'>
-        <input class="p-2  mt-1 mb-2 rounded-xl border" type="password" name="password" onChange={(e) => onChangeHandler(e)} placeholder="New password" required/>
+        <input class="p-2 w-full rounded border bg-gray-200" type="password" name="password" onChange={(e) => onChangeHandler(e)} placeholder="New password" required/>
         {errMsg && !formData?.password && <div className="text-danger mt-2 text-start">New Password is required!</div>}
         </div>
         <div className='mb-4'>
-        <input class="p-2  mt-1 mb-2 rounded-xl border" type="password" name="c_password" onChange={(e) => onChangeHandler(e)} placeholder="Confirm password" required/>
+        <input class="p-2 w-full rounded border bg-gray-200" type="password" name="c_password" onChange={(e) => onChangeHandler(e)} placeholder="Confirm password" required/>
         {errMsg && !formData?.c_password && <div className="text-danger text-start mt-2">Confirm Password is required!</div>}
         </div>
-        <button class="bg-[#7f5539] rounded-xl text-white py-2 hover:scale-105 duration-300" onClick={onClickHandler}>Change Password</button>
+        <button class="bg-[#7f5539] rounded w-40 text-white py-2 hover:scale-105 duration-300" onClick={onClickHandler}>Change Password</button>
       </form>
 
     </div>
