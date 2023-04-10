@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { SuccessToast } from '../../Toast'
+import { ErrorToast, SuccessToast } from '../../Toast'
 import { baseUrl } from '../BaseUrl/BaseUrl'
 import {RxCross2} from "react-icons/rx"
 
@@ -60,10 +60,10 @@ function Addproduct() {
     let body = {
       name:newData?.name , 
       category:newData?.category ?? "64189ddf75ac0242b4513929",
-      subCategory:newData?.sub ?? data[0]?._id ?? "",
+      subCategory:newData?.sub ?? data[0]?._id ?? null,
       desc:newData?.description,
-      material:newData?.mui ?? "6418a0b275ac0242b451398b",
-      size:`${newData?.size}*${newData?.size1}*${newData?.size2}  `,
+      material:newData?.mui ?? "Teak Wood",
+      size:`${newData?.size}*${newData?.size1}*${newData?.size2}`,
       price:Number(newData?.price),
       shippingDays:newData?.ship,
       quantity:Number(newData?.quantity),
@@ -71,14 +71,27 @@ function Addproduct() {
       image
     }
     console.log('body', body)
-    await axios.post(baseUrl + "product/add-product", body, config).then((res) => {
-      console.log('res', res)
-      SuccessToast(res?.data.message)
-      // toast.success(res?.data?.message)
-      navigate("/shoppage")
-    }).catch((err) => {
-      console.log('err', err)
-    })
+    if(newData?.size || newData?.size1 || newData?.size2){
+      if (!(newData?.size?.match('[0-9]{4}'))) {
+        ErrorToast('Please enter valid size or Maximum 4 number allowed');
+      }else if (!(newData?.size1?.match('[0-9]{4}'))) {
+        ErrorToast('Please enter valid size or Maximum 4 number allowed');
+      } else if(!(newData?.size2?.match('[0-9]{4}'))) {
+        ErrorToast('Please enter valid size or Maximum 4 number allowed');
+      }else if(newData?.size?.length > 4 || newData?.size1?.length > 4 || newData?.size2?.length > 4) {
+        ErrorToast('Please enter valid size or Maximum 4 number allowed');
+      }else{
+        await axios.post(baseUrl + "product/add-product", body, config).then((res) => {
+          console.log('res', res)
+          SuccessToast(res?.data.message)
+          // toast.success(res?.data?.message)
+          navigate("/shoppage")
+        }).catch((err) => {
+          console.log('err', err)
+        })
+      }
+    }
+    
   }
 
   const handleIamge = async(e) =>{
@@ -141,6 +154,9 @@ function Addproduct() {
                   <label for="Image">Product Image</label>
                   <input type="file" onChange={(e) => handleIamge(e)} id="Image" class="h-10 border mt-2 rounded px-4 w-full bg-gray-200" placeholder="" />
                 </div>
+                {image && <div>
+                  <img src={image} alt="" height={100} width={100} className='rounded' />
+                  </div>}
                 <div class="md:col-span-5">
                   <label for="Description">Product Description</label>
                   <textarea type="text" name="description" value={newData?.description} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="" />
@@ -164,9 +180,9 @@ function Addproduct() {
                 <div class="md:col-span-3">
                   <label for="Description">Product Size</label>
                   <div className='d-flex'>
-                  <input type="number" min={0} name="size" value={newData?.size} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
-                  <RxCross2 size={50}/><input min={0} type="number" name="size1" value={newData?.size1} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
-                  <RxCross2 size={50}/><input min={0} type="number" name="size2" value={newData?.size2} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
+                  <input type="text" min={0} name="size" pattern='[0-9]{4}' value={newData?.size} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
+                  <RxCross2 size={50}/><input min={0} type="text" pattern='[0-9]{4}' name="size1" value={newData?.size1} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
+                  <RxCross2 size={50}/><input min={0} type="text" pattern='[0-9]{4}' name="size2" value={newData?.size2} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="In Inch" />
                   </div>
                 </div>
 

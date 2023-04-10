@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { ErrorToast, SuccessToast } from '../../Toast';
 
 function Shoppage() {
+    let userData = JSON.parse(localStorage.getItem("userData"))
     const navigate = useNavigate()
   let config = {
     headers: {
@@ -27,12 +28,23 @@ function Shoppage() {
 
   const getData = () =>{
     let body ={min:filterData?.min ?? null ,max:filterData?.max ?? null,letter : null}
-    axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
-        console.log('res', res)
-        setData(res?.data?.product)
-    }).catch((err)=>{
-        console.log('err', err)
-    })
+    if(userData){
+        axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
+            console.log('res', res)
+            setData(res?.data?.product)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+    }
+    else{
+        axios.post(baseUrl + "product/getUserProduct",body).then((res)=>{
+            console.log('res', res)
+            setData(res?.data?.product)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+    }
+    
   }
   const handleSubmit = (id) =>{
     let body={

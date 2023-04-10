@@ -65,7 +65,7 @@ export default function Profile() {
                                         />
                                         <div className="mt-3">
                                             <h4>{userData?.name || "-"}</h4>
-                                            <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <p className="text-secondary mb-1 text-capitalize">{userData?.role?.role}</p>
                                             <br />
                                             <button className="btn btn-primary" onClick={() => window.open(userData?.image || "https://bootdey.com/img/Content/avatar/avatar7.png","_Blank")}>View Profile</button>
 

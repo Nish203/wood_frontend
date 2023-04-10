@@ -106,7 +106,7 @@ await axios.get(baseUrl + "review/getReview",config).then((res)=>{
               for="subject"
               class="block mb-2 text-bond font-medium text-gray-900 dark:text-gray-300"
             >
-              Subject
+              Rating
             </label>
             {/* <div className="rating">
               <input

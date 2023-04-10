@@ -14,6 +14,8 @@ import { ErrorToast, SuccessToast } from '../../Toast';
 
 function GiftItems
 () {
+    let userData = JSON.parse(localStorage.getItem("userData"))
+
     const navigate = useNavigate()
   let config = {
     headers: {
@@ -30,17 +32,33 @@ function GiftItems
   const getData = () =>{
     let data = []
     let body ={min:filterData?.min === "" ? null : filterData?.min ,max:filterData?.max=== "" ? null : filterData?.max,letter:filterData?.letter=== "" ? null : filterData?.letter} 
-    axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
-        console.log('res', res)
-        data = res?.data?.product.filter((v)=>{
-            if(v?.category?._id === "6418b706ca7fde5a4e8cb54b"){
-                return v
-            }
+    if(userData){
+
+        axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
+            console.log('res', res)
+            data = res?.data?.product.filter((v)=>{
+                if(v?.category?._id === "6418b706ca7fde5a4e8cb54b"){
+                    return v
+                }
+            })
+            setData(data)
+        }).catch((err)=>{
+            console.log('err', err)
         })
-        setData(data)
-    }).catch((err)=>{
-        console.log('err', err)
-    })
+    }else{
+        axios.post(baseUrl + "product/getUserProduct",body).then((res)=>{
+            console.log('res', res)
+            data = res?.data?.product.filter((v)=>{
+                if(v?.category?._id === "6418b706ca7fde5a4e8cb54b"){
+                    return v
+                }
+            })
+            setData(data)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+
+    }
   }
   const handleSubmit = (id) =>{
     let body={

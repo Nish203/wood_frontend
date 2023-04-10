@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { ErrorToast, SuccessToast } from '../../Toast';
 
 function Bed() {
+    let userData = JSON.parse(localStorage.getItem("userData"))
     const navigate = useNavigate()
   let config = {
     headers: {
@@ -28,18 +29,32 @@ function Bed() {
   const getData = () =>{
     let data = [];
     let body ={min:filterData?.min,max:filterData?.max}
-
-    axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
-        console.log('res', res)
-        data = res?.data?.product.filter((v)=>{
-            if(v?.category?._id === "6418b6d3ca7fde5a4e8cb52f"){
-                return v
-            }
+    if(userData){
+        axios.post(baseUrl + "product/get-product",body,config).then((res)=>{
+            console.log('res', res)
+            data = res?.data?.product.filter((v)=>{
+                if(v?.category?._id === "6418b6d3ca7fde5a4e8cb52f"){
+                    return v
+                }
+            })
+            setData(data)
+        }).catch((err)=>{
+            console.log('err', err)
         })
-        setData(data)
-    }).catch((err)=>{
-        console.log('err', err)
-    })
+    }else{
+        axios.post(baseUrl + "product/getUserProduct",body).then((res)=>{
+            console.log('res', res)
+            data = res?.data?.product.filter((v)=>{
+                if(v?.category?._id === "6418b6d3ca7fde5a4e8cb52f"){
+                    return v
+                }
+            })
+            setData(data)
+        }).catch((err)=>{
+            console.log('err', err)
+        })
+    }
+    
   }
   const handleSubmit = (id) =>{
     let body={

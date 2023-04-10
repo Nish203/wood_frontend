@@ -175,10 +175,10 @@ function Productdetail() {
               <span className="text-gray-800 font-semibold"> Item:</span>
               <span className="text-gray-600"> {data?.category?.name}</span>
             </p>
-            <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
+            {data?.subCategory?.name && <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
               <span className="text-gray-800 font-semibold">Item Type:</span>
               <span className="text-gray-600"> {data?.subCategory?.name}</span>
-            </p>
+            </p>}
             <p className="text-gray-800 font-semibold space-x-2 flex items-center mb-2">
               <span className="text-gray-800 font-semibold"> Material:</span>
             <span className="text-gray-600"> {data?.material} </span>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-import { SuccessToast } from '../../Toast'
+import { ErrorToast, SuccessToast } from '../../Toast'
 import { baseUrl } from '../BaseUrl/BaseUrl'
 import img1 from '../images/service.jpg';
 import img2 from '../images/design.jpg';
@@ -9,30 +9,44 @@ import img3 from '../images/worker.png';
 import img4 from '../images/delivery.jpg';
 import img from '../images/register2.jpeg'
 function Custom() {
+  let userData = JSON.parse(localStorage.getItem("userData"))
   let config = {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem("token")
     }
   }
-  const [newData,setNewData] = useState()
+  const [newData,setNewData] = useState({})
+  const [errMsg, setErrMsg] = useState(false)
   const handleChange = (e)=>{
     let {name,value} = e.target
     setNewData({...newData,[name]:value})
   } 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    await axios.post(baseUrl + "customization/add-customization",newData,config).then((res)=>{
-      SuccessToast(res?.data?.message)
-      setNewData({
-          email:"",
-          phone:"",
-          requirement:"",
-          name:"",
-          quantity:"",
+    if(userData){
+      if(newData?.email && newData?.phone && newData?.requirement && newData?.name && newData?.quantity){
+        await axios.post(baseUrl + "customization/add-customization",newData,config).then((res)=>{
+          SuccessToast(res?.data?.message)
+          setNewData({
+              email:"",
+              phone:"",
+              requirement:"",
+              name:"",
+              quantity:"",
+          })
+          setErrMsg(false)
+      }).catch((err)=>{
+          console.log('err', err)
+          ErrorToast(err?.response?.data.message)
       })
-  }).catch((err)=>{
-      console.log('err', err)
-  })
+      }else{
+        setErrMsg(true)
+      }
+    }else{
+      ErrorToast("Please Login First!")
+    }
+    
+    
   }
   return (
     <div className='container'>
@@ -92,26 +106,35 @@ function Custom() {
                 <div class="md:col-span-5">
                   <label for="name"> Name </label>
                   <input type="text" name="name" value={newData?.name} onChange={(e)=> handleChange(e)} id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Name" />
+                  {errMsg && !newData?.name && <div className="text-danger text-start mb-2">Name is required!</div>}
                 </div>
   
                 <div class="md:col-span-5">
                   <label for="Description"> Email </label>
                   <input type="text" name="email" value={newData?.email} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Email" />
+                  {errMsg && !newData?.email && <div className="text-danger text-start mb-2">Email is required!</div>}
+
                 </div>
   
                 <div class="md:col-span-5">
                   <label for="Description"> Mobile </label>
                   <input type="text" name="phone" value={newData?.phone} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Mobile" />
+                  {errMsg && !newData?.phone && <div className="text-danger text-start mb-2">Mobile No is required!</div>}
+
                 </div>
 
                 <div class="md:col-span-5">
                 <label for="Price"> Specific Requirement </label>
                   <textarea type="mobile" name="requirement" value={newData?.requirement} onChange={(e)=> handleChange(e)} id="Price" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Requirement" />
+                  {errMsg && !newData?.requirement && <div className="text-danger text-start mb-2">Specific Requirement is required!</div>}
+
                 </div>
   
                 <div class="md:col-span-5">
                   <label for="Diprice"> Quantity </label>
                   <input type="number" name="quantity" value={newData?.quantity} onChange={(e)=> handleChange(e)} id="Diprice" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Quantity" />
+                  {errMsg && !newData?.quantity && <div className="text-danger text-start mb-2">Quantity is required!</div>}
+
                 </div>
 
                 <div class="md:col-span-5 text-right">

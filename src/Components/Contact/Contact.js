@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { SuccessToast } from '../../Toast'
+import { ErrorToast, SuccessToast } from '../../Toast'
 import { baseUrl } from '../BaseUrl/BaseUrl'
 import img from '../images/register2.jpeg'
 function Contact() {
+    let userData = JSON.parse(localStorage.getItem("userData"))
     let config = {
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem("token")
@@ -15,22 +16,29 @@ function Contact() {
         setNewData({...newData,[name]:value})
     }
     const handleSubmit = async(e) =>{
+        
         e.preventDefault()
         let body = {
             email:newData?.email,
             subject:newData?.subject,
             message:newData?.message,
         }
-        await axios.post(baseUrl + "contact/addContact",body,config).then((res)=>{
-            SuccessToast(res?.data?.message)
-            setNewData({
-                email:"",
-                subject:"",
-                message:""
-            })
-        }).catch((err)=>{
-            console.log('err', err)
-        })
+        if(userData){
+            await axios.post(baseUrl + "contact/addContact",body,config).then((res)=>{
+                SuccessToast(res?.data?.message)
+                setNewData({
+                    email:"",
+                    subject:"",
+                    message:""
+                })
+            }).catch((err)=>{
+                console.log('err', err)
+            })  
+        }
+        else{
+            ErrorToast("Please Login First!")
+          }
+        
     }
   return (
     <section class="bg-white dark:bg-gray-900">
