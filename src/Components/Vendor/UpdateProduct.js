@@ -103,7 +103,7 @@ function UpdateProduct() {
                 id: data?._id,
                 // animalType: data?.animalType,
                 category: data?.category,
-                sub: data?.subCategory,
+                sub: data?.subCategory=== ""? undefined : data?.subCategory ,
                 name: data?.name,
                 mui: data?.material,
                 size:data?.size.split("*")[0],

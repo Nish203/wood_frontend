@@ -181,9 +181,12 @@ export default function Navbar({ fixed }) {
                     <li className=" py-2">
                     <Link to="/pending
                     "> My Product </Link>
-                  </li></>: userData && <li className=" py-2">
+                  </li><li className=" py-2">
+                      <Link to="/venderview"> Order </Link>
+                    </li></>: userData && <> <li className=" py-2">
                       <Link to="/venderdetail"> Vender </Link>
-                    </li>}
+                    </li></>
+                    }
                     
                     {userData && (
                       <li className="py-2">
