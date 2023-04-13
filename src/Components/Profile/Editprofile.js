@@ -142,7 +142,7 @@ export default function EditProfile() {
                                             <br />
                                             <label htmlFor="fileUpload">
                                                 <div>
-                                                    <h3 className='btn btn-primary'>Edit Profile Photo</h3>
+                                                    <h3 className='w-40 text-white p-2 text-base rounded h-10 bg-yellow-800'>Edit Profile Photo</h3>
                                                 </div>
                                             </label>
                                             <input hidden id="fileUpload" onChange={handleIamge} type="file" accept="image/png, image/jpg, image/jpeg , image/webp" />
@@ -274,7 +274,7 @@ export default function EditProfile() {
                                     <div className="row">
                                         <div className="col-sm-3" />
                                         <div className="col-sm-9 text-secondary">
-                                            <button className="btn btn-primary" onClick={handleSubmit}>Save Changes</button>
+                                            <button className="w-40 text-white p-1 text-base rounded h-10 bg-yellow-800" onClick={handleSubmit}>Save Changes</button>
                                         </div>
                                     </div>
                                 </div>

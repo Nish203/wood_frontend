@@ -17,7 +17,7 @@ const Newitems = () => {
 
           {/* text */}
 
-             <h2 class="text-3xl ml-4 text-black">New In Store</h2>
+             <h2 class="text-3xl ml-10 text-black">New In Store</h2>
 
           {/* product slider */}
 
@@ -32,7 +32,7 @@ const Newitems = () => {
                 <div className='min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80'>
                       <img src={img} alt='' class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
                       <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                       Chair
+                       Wooden Stool
                       </div>
                 </div>
                
@@ -42,7 +42,7 @@ const Newitems = () => {
         <div class=" min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img2} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                       Bed
+                       Mirror
                       </div>
         </div>
       
@@ -52,7 +52,7 @@ const Newitems = () => {
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img3} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                        Table
+                        Study Table
                       </div>
         </div>
         
@@ -63,7 +63,7 @@ const Newitems = () => {
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img4} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                       Cabinet
+                    Arm chair
                       </div>
         </div>
         
@@ -80,7 +80,7 @@ const Newitems = () => {
                 <div className='min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80'>
                       <img src={img} alt='' class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
                       <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                        Sofa
+                      Wooden Stool
                       </div>
                 </div>
                
@@ -90,7 +90,7 @@ const Newitems = () => {
         <div class=" min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img2} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                       Gift Items
+                        Mirror
                       </div>
         </div>
       
@@ -100,23 +100,23 @@ const Newitems = () => {
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img3} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                        Exclusive
+                  Study Table
                       </div>
         </div>
         
         
       </div>
 
-    {/* <div class="group relative">
+    <div class="group relative">
         <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
           <img src={img4} class="max-w-s transition duration-300 ease-in-out hover:scale-110"/>
           <div className='absolute text-white bottom-[20px] text-center w-full text-[18px] lg:text-2xl font-medium capitalize'>
-                        Dinnig
+                        Arm chair
                       </div>
         </div>
         
         
-      </div> */}
+      </div>
 
      
 

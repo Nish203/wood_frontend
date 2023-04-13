@@ -32,9 +32,10 @@ const Reviewslide = () => {
 
  
 <section class="mb-20 text-gray-700 px-10 ">
-  <div class="flex max-w-8xl mx-auto">
-    <h3 class="text-3xl  mb-16 text-gray-800 ml-96  "> Customer Review </h3>
-    <div className=' ml-80 '>
+  <div class="flex ">
+    {/* <h3 class="text-3xl  mb-16 text-gray-800   "> Customer Review </h3> */}
+    <h2 class="text-3xl ml-20 text-black">New In Store</h2>
+    <div className='ml-20'>
       <Link to="/writereview"><button className=' item-right py-2 px-4 fond-bold tarcking-wide leading-7 text-white bg-black rounded hover:shadow-xl '> Add Review </button></Link>
     </div>
   </div>
@@ -98,6 +99,10 @@ const Reviewslide = () => {
     
     
   </div>
+
+  <div className='ml-20 mt-10'>
+      <Link to="/writereview"><button className=' py-2 px-4 fond-bold tarcking-wide leading-7 text-white bg-black rounded hover:shadow-xl '> Add Review </button></Link>
+    </div>
 </section>
 
   )

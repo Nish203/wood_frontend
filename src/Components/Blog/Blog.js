@@ -37,7 +37,7 @@ function Blog() {
                 return(
                     <div class=" bg-white  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-        <img class="rounded-t-lg " src={v?.image}    alt="" style={{height:"300px"}} />
+        <img class="rounded-t-lg w-full " src={v?.image}    alt="" style={{height:"300px"}} />
     </a>
     <div className='flex justify-between mx-3 mb-3 mt-2'>
                     <div>{moment(v?.createdAt).format("DD/MM/YYYY")}</div>

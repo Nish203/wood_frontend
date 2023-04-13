@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { ErrorToast, SuccessToast } from '../../Toast'
 import { baseUrl } from '../BaseUrl/BaseUrl'
-import img from '../images/register2.jpeg'
+import img from '../images/contact.jpg'
 function Contact() {
     let userData = JSON.parse(localStorage.getItem("userData"))
     let config = {
@@ -43,7 +43,7 @@ function Contact() {
   return (
     <section class="bg-white dark:bg-gray-900">
         <div class="flex flex-col w-full px-0 mx-auto md:flex-row"> 
-    <div className='py-8 px-5'>
+    <div className='py-8 px-5 w-50 h-50'>
         <img src={img}></img>
     </div>
 

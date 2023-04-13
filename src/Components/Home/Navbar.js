@@ -15,7 +15,8 @@ export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
-      <nav className=" sticky top-0  z-30 relative flex flex-wrap items-center justify-between bg-[#ffedd5]">
+      <nav className=" sticky top-0  z-30 relative flex flex-wrap items-center justify-between bg-white
+       bg-gradient-to-l from-yellow-800">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative  flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <img src={logo} className="w-52 h-18  "></img>
@@ -41,7 +42,7 @@ export default function Navbar({ fixed }) {
                 <Link to="/"> Home </Link>
               </li>
               {/* Furniture */}
-              <div class="relative" data-te-dropdown-ref>
+              <div class="relative cursor-pointer" data-te-dropdown-ref>
                 <a
                   class="flex items-center text-l  "
                   id="dropdownMenuButton1"
@@ -146,7 +147,7 @@ export default function Navbar({ fixed }) {
                      
                     </form>
                 {/* Profile */}
-                <div class="relative" data-te-dropdown-ref>
+                <div class="relative cursor-pointer" data-te-dropdown-ref>
                   <a
                     class="flex items-center   pb-2 text-l  uppercase text-black "
                     id="dropdownMenuButton1"

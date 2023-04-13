@@ -6,7 +6,7 @@ const Footer = () => {
   const navigate = useNavigate()
   return (
 <div>
-<footer class="relative z-10 bg-[#ffedd5]  pt-3 pb-3 lg:pt-[120px] lg:pb-20">
+<footer class="relative z-10   bg-gradient-to-l from-yellow-800  pt-3 pb-3 lg:pt-[120px] lg:pb-20">
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4 sm:w-2/3 lg:w-3/12 ">

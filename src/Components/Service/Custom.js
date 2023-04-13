@@ -7,7 +7,7 @@ import img1 from '../images/service.jpg';
 import img2 from '../images/design.jpg';
 import img3 from '../images/worker.png';
 import img4 from '../images/delivery.jpg';
-import img from '../images/register2.jpeg'
+import img from '../images/Custome.jpg'
 function Custom() {
   let userData = JSON.parse(localStorage.getItem("userData"))
   let config = {
@@ -96,48 +96,48 @@ function Custom() {
   </div>
 </section>
 
-       <div class="flex flex-col w-full px-0 mx-auto md:flex-row"> 
-       <div className='sm:ml-40 ml-2 sm: mr-10 mb-8 mt-8'>
+       <div class="flex flex-col  md:flex-row"> 
+       <div className='sm:ml-20 ml-2 sm: mr-10 mb-8 mt-8'>
         <div>
-        <h2 class=" text-center font-bold text-3xl mb-10 text-[#7f5539]"> Customer Requirements</h2>
+        <h2 class=" ml-20 mr-20 text-center font-bold text-3xl mb-10 text-[#7f5539]"> Customer Requirements</h2>
         </div>
-        <div class=" grid gap-4 gap-y-2 text-m  grid-cols-1 md:grid-cols-5">
+        <div class=" grid gap-4 gap-y-2 text-m  grid-cols-1 md:grid-cols-10">
 
-                <div class="md:col-span-5">
+                <div class="md:col-span-10 ">
                   <label for="name"> Name </label>
-                  <input type="text" name="name" value={newData?.name} onChange={(e)=> handleChange(e)} id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Name" />
-                  {errMsg && !newData?.name && <div className="text-danger text-start mb-2">Name is required!</div>}
+                  <input type="text" name="name" value={newData?.name} onChange={(e)=> handleChange(e)} id="name" class="h-12 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Name" />
+                  {errMsg && !newData?.name && <div className="text-danger text-start mb-2 ">Name is required!</div>}
                 </div>
   
-                <div class="md:col-span-5">
+                <div class="md:col-span-10">
                   <label for="Description"> Email </label>
-                  <input type="text" name="email" value={newData?.email} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Email" />
+                  <input type="text" name="email" value={newData?.email} onChange={(e)=> handleChange(e)} id="Description" class="h-12 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Email" />
                   {errMsg && !newData?.email && <div className="text-danger text-start mb-2">Email is required!</div>}
 
                 </div>
   
-                <div class="md:col-span-5">
+                <div class="md:col-span-10">
                   <label for="Description"> Mobile </label>
-                  <input type="text" name="phone" value={newData?.phone} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Mobile" />
+                  <input type="text" name="phone" value={newData?.phone} onChange={(e)=> handleChange(e)} id="Description" class="h-12 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="Mobile" />
                   {errMsg && !newData?.phone && <div className="text-danger text-start mb-2">Mobile No is required!</div>}
 
                 </div>
 
-                <div class="md:col-span-5">
+                <div class="md:col-span-10">
                 <label for="Price"> Specific Requirement </label>
-                  <textarea type="mobile" name="requirement" value={newData?.requirement} onChange={(e)=> handleChange(e)} id="Price" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Requirement" />
+                  <textarea type="mobile" name="requirement" value={newData?.requirement} onChange={(e)=> handleChange(e)} id="Price" class="h-40 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Requirement" />
                   {errMsg && !newData?.requirement && <div className="text-danger text-start mb-2">Specific Requirement is required!</div>}
 
                 </div>
   
-                <div class="md:col-span-5">
+                <div class="md:col-span-10">
                   <label for="Diprice"> Quantity </label>
-                  <input type="number" name="quantity" value={newData?.quantity} onChange={(e)=> handleChange(e)} id="Diprice" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Quantity" />
+                  <input type="number" name="quantity" value={newData?.quantity} onChange={(e)=> handleChange(e)} id="Diprice" class="h-12 border mt-1 rounded px-4 w-full bg-gray-200"  placeholder="Quantity" />
                   {errMsg && !newData?.quantity && <div className="text-danger text-start mb-2">Quantity is required!</div>}
 
                 </div>
 
-                <div class="md:col-span-5 text-right">
+                <div class="md:col-span-10 text-right">
                   <div class="inline-flex items-end">
                     <button class="bg-yellow-900 hover:bg-[#583823] text-white font-bold py-2 px-4 rounded" onClick={handleSubmit}>Submit</button>
                   </div>
@@ -146,7 +146,7 @@ function Custom() {
               </div>
     </div>
 
-    <div className='py-5 px-5 '>
+    <div className='py-5 px-5 w-50 h-50'>
         <img src={img}></img>
     </div>
   </div>

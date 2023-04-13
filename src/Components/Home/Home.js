@@ -1,7 +1,6 @@
-
+import 'flowbite';
 import React, { useState,  useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import Navbar from './Navbar'
+import img from '../images/bg.jpg'
 import Explore from './Explore'
 import Newitems from './Newitems'
 import Trending from './Trending'
@@ -14,12 +13,12 @@ const Home = () => {
   return (
 <div className='w-full '>
 
-<div class=" bg-cover" style={{
+<div class=" bg-cover h-full " style={{
             backgroundImage:
-              "url('https://img.freepik.com/premium-photo/mock-up-furniture-design-minimal-interior-empty-wall-background_221619-514.jpg')",
+              "url('https://img.freepik.com/premium-photo/empty-living-room-with-blue-sofa-plants-table-empty-white-wall-background-3d-rendering_41470-1778.jpg?w=2000')",
           }} >
         
-      
+
         <div className=' pb-40 pt-24  mx-auto max-w-6xl '>
             <div className='flex'>
             <div className='  w-1/2 pt-9 md:p-8 text-left md:text-left space-y-4'>

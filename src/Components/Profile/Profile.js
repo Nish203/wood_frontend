@@ -67,7 +67,7 @@ export default function Profile() {
                                             <h4>{userData?.name || "-"}</h4>
                                             <p className="text-secondary mb-1 text-capitalize">{userData?.role?.role}</p>
                                             <br />
-                                            <button className="btn btn-primary" onClick={() => window.open(userData?.image || "https://bootdey.com/img/Content/avatar/avatar7.png","_Blank")}>View Profile</button>
+                                            <button className=" w-28 text-white p-1 rounded h-10 bg-yellow-800" onClick={() => window.open(userData?.image || "https://bootdey.com/img/Content/avatar/avatar7.png","_Blank")}>View Profile</button>
 
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@ export default function Profile() {
                                     <div className="row">
                                         <div className="col-sm-12">
                                             <Link
-                                                className="btn btn-primary text-white"
+                                                className="w-full text-white p-2.5 rounded h-10 bg-yellow-800"
                                                 to="/EditProfile"
                                                 style={{color:"white"}}
                                             >
