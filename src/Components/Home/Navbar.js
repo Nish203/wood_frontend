@@ -76,7 +76,7 @@ export default function Navbar({ fixed }) {
                     <Link to="/cabinet"> Cabinet </Link>
                   </li>
                   <li className=" py-2 ">
-                    <Link to="/consoles"> Sofa </Link>
+                    <Link to="/sofa"> Sofa </Link>
                   </li>
                   <li className=" py-2 ">
                     <Link to="/giftItems"> Gift item </Link>

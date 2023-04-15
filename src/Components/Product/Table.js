@@ -405,7 +405,7 @@ function Table() {
                 <div class="bg-white shadow rounded overflow-hidden">  
                     <div className='relative'>
                     <div className='min-h-50 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80'>
-                        <img src={val?.image} alt='img' style={{height:"100%"}} />
+                        <img src={val?.image} alt='img' className='w-full  transition duration-300 ease-in-out hover:scale-110' style={{height:"100%"}} />
                     </div>
                     {/* <div className='absolute inset-0 bg-opacity-40 flex justify-end'>
                             <Link className='text-white text-lg w-9 h-8 mt-2 mr-2 rounded-full bg-yellow-900 flex items-center justify-center hover:bg-black transition'>
@@ -415,7 +415,7 @@ function Table() {
                     </div>
                     <div className='pt-4 pb-3 px-4 text-start'>
                         <Link className='uppercase font-medium text-lb  mb-2 text-gray-800 hover:text-primary transition text-start'> {val?.name}</Link>
-                        <div className='uppercase font-medium text-lb  mb-2 text-gray-800 hover:text-primary transition text-start'> {val?.subCategory?.name}</div>
+                        <div className='uppercase font-medium text-lb  mb-2 text-yellow-600  transition text-start'> {val?.subCategory?.name}</div>
 
                         <div className='flex items-baseline mb-1 space-x-2 font-roboto'>
                             <p className='text-lb text-primary font-semibold'> ₹{val?.price - val?.discPrice} </p>

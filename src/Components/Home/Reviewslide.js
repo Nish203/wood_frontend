@@ -34,10 +34,8 @@ const Reviewslide = () => {
 <section class="mb-20 text-gray-700 px-10 ">
   <div class="flex ">
     {/* <h3 class="text-3xl  mb-16 text-gray-800   "> Customer Review </h3> */}
-    <h2 class="text-3xl ml-20 text-black">New In Store</h2>
-    <div className='ml-20'>
-      <Link to="/writereview"><button className=' item-right py-2 px-4 fond-bold tarcking-wide leading-7 text-white bg-black rounded hover:shadow-xl '> Add Review </button></Link>
-    </div>
+    <h2 class="text-3xl ml-20 text-black">Customer Review</h2>
+   
   </div>
 
   <div class=" px-2 grid md:grid-cols-3 gap-5 lg:gap-12">

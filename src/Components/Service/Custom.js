@@ -55,7 +55,7 @@ function Custom() {
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-10">
     <div class="relative mb-10 px-3 lg:mb-0">
       <div class="mb-2 flex justify-center ">
-       <img src={img1}  class="h-auto max-w-s rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"/>
+       <img src={img1}  class="h-auto max-w-s rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all "/>
       </div>
       <h5 class="mb-6 font-bold text-yellow-900 mt-5">Share your Idea</h5>
       <h6 class="mb-0 font-normal text-black">Our furniture designers understand your requirements closely to craft a perfect piece.</h6>
@@ -66,7 +66,7 @@ function Custom() {
 
     <div class="relative mb-12 px-3 lg:mb-0">
       <div class="mb-2 flex justify-center">
-        <img src={img2}   class="h-auto max-w-s rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"/>
+        <img src={img2}   class="h-auto max-w-s rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all "/>
       </div>
       <h5 class="mb-6 font-bold text-yellow-900 mt-5">Designing</h5>
       <h6 class="mb-0 font-normal  text-black">Your idea is converted into a workable 3D design for further approvals and confirmations.</h6>
@@ -77,7 +77,7 @@ function Custom() {
 
     <div class="relative mb-12 px-3 lg:mb-0">
       <div class="mb-2 flex justify-center">
-      <img src={img3}   class="h-auto max-w-s rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"/>
+      <img src={img3}   class="h-auto max-w-s rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all "/>
       </div>
       <h5 class="mb-6 font-bold text-yellow-900 mt-5">Manufacturing</h5>
       <h6 class="mb-0 font-normal  text-black">As soon as our team receives the confirmation, manufacturing is initiated for your custom furniture.</h6>
@@ -88,7 +88,7 @@ function Custom() {
 
     <div class="relative mb-12 px-3 lg:mb-0">
       <div class="mb-2 flex justify-center">
-      <img src={img4}   class="h-auto max-w-s rounded-lg shadow-none transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"/>
+      <img src={img4}   class="h-auto max-w-s rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all "/>
       </div>
       <h5 class="mb-6 font-bold text-yellow-900 mt-5">Delivery</h5>
       <h6 class="mb-0 font-normal  text-black">Each custom order is treated with high priority & we ensured to deliver it on time.</h6>

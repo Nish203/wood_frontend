@@ -7,7 +7,7 @@ import Trending from './Trending'
 import Help from './Help'
 import Reviewslide from './Reviewslide'
 import Footer from './Footer'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -29,7 +29,9 @@ const Home = () => {
                      Stagwood is site that allows you to buy and sell products and services online.
                 </a>
                 <div className='flex pt-7 space-x-6'>
+                    <Link to="">
                     <button className='flex justify-center  items-center py-3 px-8 fond-bold tarcking-wide leading-7 text-white bg-black rounded-xl hover:shadow-xl '> Explore Now </button>
+                    </Link>
                 </div>
             </div>
             </div>

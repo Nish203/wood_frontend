@@ -33,7 +33,7 @@ import Pending from './Components/Vendor/Pending';
 import Chair from './Components/Product/Chair';
 import Bed from './Components/Product/Bed';
 import Cabinet from './Components/Product/Cabinet';
-import Consoles from './Components/Product/Consoles';
+
 import Exclusive from './Components/Product/Exclusive';
 import GiftItems from './Components/Product/GiftItems';
 import Table from './Components/Product/Table';
@@ -42,6 +42,11 @@ import CheckoutSuccess from './Components/Shop/CheckoutSuccess';
 import Writereview from './Components/Review/Writereview';
 import Profile1 from './Components/Profile/Profile1';
 import Editprofile1 from './Components/Profile/Editprofile1';
+import Bed_help from './Components/Help/Bed_help';
+import Cabinet_help from './Components/Help/Cabinet_help';
+import Sofa_help from './Components/Help/Sofa_help';
+import Chair_help from './Components/Help/Chair_help';
+import Sofa from './Components/Product/Sofa';
 
 
 
@@ -80,7 +85,7 @@ const Routerr = () => {
               <Route path="/chair" element={<Chair />} /> 
               <Route path="/bed" element={<Bed />} /> 
               <Route path="/cabinet" element={<Cabinet />} /> 
-              <Route path="/consoles" element={<Consoles />} /> 
+              <Route path="/sofa" element={<Sofa />} /> 
               <Route path="/exclusive" element={<Exclusive />} /> 
               <Route path="/giftItems" element={<GiftItems />} /> 
               <Route path="/table" element={<Table />} /> 
@@ -89,6 +94,11 @@ const Routerr = () => {
               <Route path="/writereview" element={<Writereview />} /> 
               <Route path="/profile1" element={<Profile1 />} /> 
               <Route path="/editProfile1" element={<Editprofile1 />} /> 
+
+              <Route path="/bed_help" element={<Bed_help />} /> 
+              <Route path="/cabinet_help" element={<Cabinet_help />} /> 
+              <Route path="/sofa_help" element={<Sofa_help />} /> 
+              <Route path="/chair_help" element={<Chair_help />} /> 
               
              
             </Routes>

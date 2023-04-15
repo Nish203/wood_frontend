@@ -92,6 +92,7 @@ const Footer = () => {
               <a
                 href="javascript:void(0)"
                 class="text-body-color hover:text-primary mb-2 inline-block text-base leading-loose"
+                onClick={()=> navigate("/Writereview")}
               >
                 Share Review
               </a>

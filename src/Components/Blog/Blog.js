@@ -35,7 +35,7 @@ function Blog() {
         <div className='container sm:grid grid-cols-3 gap-10 mb-10 mt-5 '>
             {data?.map((v)=>{
                 return(
-                    <div class=" bg-white  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class=" bg-white  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 duration-300 hover:-translate-y-2">
     <a href="#">
         <img class="rounded-t-lg w-full " src={v?.image}    alt="" style={{height:"300px"}} />
     </a>

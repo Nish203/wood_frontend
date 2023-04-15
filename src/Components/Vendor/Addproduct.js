@@ -159,7 +159,7 @@ function Addproduct() {
                   </div>}
                 <div class="md:col-span-5">
                   <label for="Description">Product Description</label>
-                  <textarea type="text" name="description" value={newData?.description} onChange={(e)=> handleChange(e)} id="Description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="" />
+                  <textarea type="text" name="description" value={newData?.description} onChange={(e)=> handleChange(e)} id="Description" class="h-24 border mt-1 rounded px-4 w-full bg-gray-200" placeholder="" />
                 </div>
   
              

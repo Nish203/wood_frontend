@@ -54,7 +54,7 @@ function Wishlist() {
                 <div class="bg-white shadow rounded overflow-hidden">  
                     <div className='relative' onClick={()=> navigate(`/productdetail/${val?.productId?._id}`)}>
                     <div className='min-h-50 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80'>
-                        <img src={val?.productId?.image} alt='img' style={{height:"100%"}} />
+                        <img src={val?.productId?.image} alt='img ' className='w-full  transition duration-300 ease-in-out hover:scale-110' style={{height:"100%"}} />
                     </div>
                     {/* <div className='absolute inset-0 bg-opacity-40 flex justify-end'>
                             <Link className='text-white text-lg w-9 h-8 mt-2 mr-2 rounded-full bg-yellow-900 flex items-center justify-center hover:bg-black transition'>

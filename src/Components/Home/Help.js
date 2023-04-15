@@ -4,7 +4,7 @@ import img1 from '../images/website/sofa/img__5.webp'
 import img from '../images/website/bed/bed__3.webp'
 import img2 from '../images/website/cabinate/cabinate__22.webp'
 import img3 from '../images/website/chair/chair__13.webp'
-import { NavLink } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Help = () => {
   return (
@@ -22,10 +22,10 @@ const Help = () => {
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-lg text-black ">
-              <NavLink>
+              <Link to="/sofa_help">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                Here How To Choose The Right Sofa
-              </NavLink>
+              </Link>
             </h3>
            
           </div>
@@ -40,10 +40,10 @@ const Help = () => {
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-lg text-black ">
-              <NavLink>
+              <Link to="/bed_help">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 How To Buy A Perfect Bed For Your Room
-              </NavLink>
+              </Link>
             </h3>
            
           </div>
@@ -58,10 +58,10 @@ const Help = () => {
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-lg text-black">
-              <NavLink>
+              <Link to="cabinet_help">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 Everything About Cabinets And Table
-              </NavLink>
+              </Link>
             </h3>
            
           </div>
@@ -76,10 +76,10 @@ const Help = () => {
         <div class="mt-4 flex justify-between">
           <div>
             <h3 class="text-lg text-black ">
-              <NavLink>
+              <Link to="chair_help">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 What To Look For While Buying A Chair
-              </NavLink>
+              </Link>
             </h3>
            
           </div>
