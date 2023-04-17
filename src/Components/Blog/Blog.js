@@ -29,7 +29,7 @@ function Blog() {
   },[])
   return (
     <div className='container'>
-        <div class=" ml-5 font-bold text-4xl py-3 mt-4 border-b border-black  text-black"> Blog  </div>
+        <div class=" ml-5 font-bold text-4xl py-3 mt-4 border-b border-black text-yellow-800"> Blog  </div>
        
         
         <div className='container sm:grid grid-cols-3 gap-10 mb-10 mt-5 '>

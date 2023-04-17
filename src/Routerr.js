@@ -47,6 +47,8 @@ import Cabinet_help from './Components/Help/Cabinet_help';
 import Sofa_help from './Components/Help/Sofa_help';
 import Chair_help from './Components/Help/Chair_help';
 import Sofa from './Components/Product/Sofa';
+import Policy from './Components/footer/Policy';
+import Warranty from './Components/footer/Warranty';
 
 
 
@@ -99,6 +101,8 @@ const Routerr = () => {
               <Route path="/cabinet_help" element={<Cabinet_help />} /> 
               <Route path="/sofa_help" element={<Sofa_help />} /> 
               <Route path="/chair_help" element={<Chair_help />} /> 
+              <Route path="/policy" element={<Policy />} /> 
+              <Route path="/Warranty" element={<Warranty />} /> 
               
              
             </Routes>

@@ -15,13 +15,13 @@ import "../Contact/About.css";
 function About() {
   return (
     <div className='container'>
-        <div class=" ml-10 font-bold text-4xl py-3 mt-5 border-b border-black  text-[#7f5539]"> Making of Solid Wood Furniture </div>
+        <div class=" ml-10 font-bold text-4xl py-3 mt-5 border-b border-black  text-yellow-800"> Making of Solid Wood Furniture </div>
         <div className='mt-10 mb-10 ml-5'>
 
        
         <div className='row bg-gray-200 '>
             <div className='col-sm '>
-                <img src={img1} className="imgl"/>
+                <img src={img1} className="imgl rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
             <div className='col-sm '>
                 <h2 className='head mt-10'>This is Where is Starts.</h2>
@@ -35,13 +35,13 @@ function About() {
                 <p className='text'>Our In-house saw machines cuts the wooden logs into desired sizes to achieve the strength and stability in your wooden bed, sofa dining & everything else solid wood.</p>
             </div>
             <div className='col-sm'>
-                <img src={img2} className="imgr"/>
+                <img src={img2} className="imgr rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
         </div>
 
         <div className='row bg-gray-200'>
             <div className='col-sm '>
-                <img src={img3} className="imgl"/>
+                <img src={img3} className="imgl rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
             <div className='col-sm'>
                 <h2 className='head mt-10'>Treatment</h2>
@@ -55,13 +55,13 @@ function About() {
                 <p className='text'>More commonly known as drying the wood. As simple as it seems with the way we do it, it actually is a very scientific process. Maintaining the pressure levels, moistures, depending on the duration and atmosphere and get the right seasoning done, the right way.</p>
             </div>
             <div className='col-sm'>
-                <img src={img4} className="imgr"/>
+                <img src={img4} className="imgr rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
         </div>
 
         <div className='row bg-gray-200'>
             <div className='col-sm '>
-                <img src={img5} className="imgl"/>
+                <img src={img5} className="imgl rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
             <div className='col-sm'>
                 <h2 className='head mt-10'>Now Making it.</h2>
@@ -75,13 +75,13 @@ function About() {
                 <p className='text'>All the products made & finished the given the final quotes, based on your selection of finish and making sure that you get a no-maintenance finished product. Thoroughly inspected by our supervisors to make sure that the product is up to the mark</p>
             </div>
             <div className='col-sm'>
-                <img src={img6} className="imgr"/>
+                <img src={img6} className="imgr rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
         </div>
 
         <div className='row bg-gray-200'>
             <div className='col-sm '>
-                <img src={img7} className="imgl"/>
+                <img src={img7} className="imgl rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
             <div className='col-sm'>
                 <h2 className='head mt-10'>Product Standards</h2>
@@ -95,13 +95,13 @@ function About() {
                 <p className='text'>Getting your products packed the right way so that it reaches just the way we made it for you :.</p>
             </div>
             <div className='col-sm'>
-                <img src={img8} className="imgr"/>
+                <img src={img8} className="imgr rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
              </div>
         </div>
 
         <div className='row bg-gray-200'>
             <div className='col-sm '>
-                <img src={img9} className="imgl"/>
+                <img src={img9} className="imgl rounded-lg shadow-[0_9px_0_rgb(0,0,0)] hover:shadow-[0_4px_0px_rgb(0,0,0)] text-black bg-white ease-out hover:translate-y-1 transition-all"/>
             </div>
             <div className='col-sm'>
                 <h2 className='head mt-10'>Packaging.</h2>

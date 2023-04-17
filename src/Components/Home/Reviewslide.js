@@ -34,7 +34,7 @@ const Reviewslide = () => {
 <section class="mb-20 text-gray-700 px-10 ">
   <div class="flex ">
     {/* <h3 class="text-3xl  mb-16 text-gray-800   "> Customer Review </h3> */}
-    <h2 class="text-3xl ml-20 text-black">Customer Review</h2>
+    <h2 class="text-3xl ml-20 mb-10 text-black">Customer Review</h2>
    
   </div>
 

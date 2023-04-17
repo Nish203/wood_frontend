@@ -60,9 +60,9 @@ export default function Navbar({ fixed }) {
                   aria-labelledby="dropdownMenuButton1"
                   data-te-dropdown-menu-ref
                 >
-                  <li className=" py-2  ">
+                  {/* <li className=" py-2  ">
                     <Link to="/shoppage"> All Product </Link>
-                  </li>
+                  </li> */}
                   <li className=" py-2  ">
                     <Link to="/chair"> Chair </Link>
                   </li>
@@ -107,16 +107,20 @@ export default function Navbar({ fixed }) {
 
               {/* contact us */}
 
-              <li className="nav-item mr-7 sm:ml-5">
+              <li className="nav-item mr-2 sm:ml-5">
                 <Link to="/contact"> Contact us </Link>
+              </li>
+
+              <li className="nav-item mr-7 sm:ml-5">
+                <Link to="/shoppage"> Browse All </Link>
               </li>
              
 
              
 
-              <div className="ml-18 mt-2 gap-2 hidden sm:flex justify-between">
+              <div className="ml-28 mt-2 gap-2 hidden sm:flex justify-between">
                 {/* search */}
-                <form class="flex items-center ml-6">
+                {/* <form class="flex items-center ml-6">
                       <label for="simple-search" class="sr-only">
                         Search
                       </label>
@@ -145,7 +149,7 @@ export default function Navbar({ fixed }) {
                         />
                       </div>
                      
-                    </form>
+                    </form> */}
                 {/* Profile */}
                 <div class="relative cursor-pointer" data-te-dropdown-ref>
                   <a

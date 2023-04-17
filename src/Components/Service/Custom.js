@@ -50,7 +50,7 @@ function Custom() {
   }
   return (
     <div className='container'>
-<div class="  ml-10 font-bold text-4xl py-3 mt-5 border-b border-black  text-[#7f5539]"> If you can Imagine it? We can Make it!  </div>
+<div class="  ml-10 font-bold text-4xl py-3 mt-5 border-b border-black  text-yellow-800"> If you can Imagine it? We can Make it!  </div>
        <section class="  mt-5 text-center block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-10">
     <div class="relative mb-10 px-3 lg:mb-0">
